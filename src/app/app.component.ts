@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ApplicationModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SquaresComponent } from './squares/squares.component';
@@ -7,8 +8,8 @@ import { SquaresComponent } from './squares/squares.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [SquaresComponent]
+  imports: [SquaresComponent, CommonModule]
 })
 export class AppComponent {
-  title = 'Restart';
+  title = '10x10';
 }
