@@ -1,34 +1,59 @@
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-image: url("static/backgroundimg.jpg");
+  align-items: center;
+  background-image: url("static/backgroundimg.jpg");
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  overflow: auto;
+}
+
+.buttons-div {
+  align-items: center;
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: row;
+  justify-content: left;
 }
 
 .play-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(111.49deg, rgba(255, 255, 255, 0.4) -8.95%, rgba(255, 255, 255, 0.01) 114%);
-    backdrop-filter: blur(100px);
-    border: solid 2px;
-    border-color: white;
-    border-radius: 25px;
-    padding: 20px;
-    width: fit-content;
-    height: fit-content;
+  backdrop-filter: blur(100px);
+  background: linear-gradient(111.49deg, rgb(255 255 255 / 40%) -8.95%, rgb(255 255 255 / 1%) 114%);
+  border: solid 2px;
+  border-color: #fff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .board {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(180deg, #AAC2FF 0%, #C81BF1 100%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(101px);
-    border-radius: 20px;
-    padding: 20px;
-    width: fit-content;
-    height: fit-content;
+  align-items: center;
+  backdrop-filter: blur(101px);
+  background: linear-gradient(180deg, #aac2ff 0%, #c81bf1 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.upper-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.size-div {
+  background: linear-gradient(180deg, #296399 54.68%, rgb(255 255 255 / 0%) 187.46%);
+  background-clip: text;
+  flex-basis: 50%;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px;
+  text-align: left;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize;
 }

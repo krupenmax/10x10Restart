@@ -1,0 +1,31 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "ignoreFiles": [
+        "*",
+        "dist/**/*",
+        "node_modules/**/*",
+        "src/**/*.jpg",
+        "src/**/*.json",
+        "src/**/*.html",
+        "src/**/*.ico",
+        "src/**/*.ts",
+        "src/**/*.woff2"
+    ],
+    "plugins": [
+        "stylelint-order"
+    ],
+    "rules": {
+        "font-family-no-missing-generic-family-keyword": null,
+        "selector-class-pattern": [
+            "^[a-z]+(-[a-z]+)?(__[a-z]+)*(--[a-z0-9]+(-[a-z0-9]+)?)?$",
+            {
+                "resolveNestedSelectors": true
+            }
+        ],
+        "order/order": [
+            "custom-properties",
+            "declarations"
+        ],
+        "order/properties-alphabetical-order": true
+    }
+}

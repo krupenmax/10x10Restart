@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-restart',
-  templateUrl: './restart.component.html',
-  styleUrls: ['./restart.component.scss'],
-  standalone: true
+  selector: "app-restart",
+  standalone: true,
+  styleUrls: ["./restart.component.scss"],
+  templateUrl: "./restart.component.html",
 })
-export class RestartComponent implements OnInit {
+export class RestartComponent  {
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

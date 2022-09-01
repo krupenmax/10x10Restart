@@ -1,0 +1,166 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "charting_library.*",
+    "projects/**/*"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@typescript-eslint/brace-style": [
+          "error",
+          "stroustrup"
+        ],
+        "@typescript-eslint/comma-dangle": [
+          "error",
+          {
+            "arrays": "always-multiline",
+            "enums": "always-multiline",
+            "functions": "always-multiline",
+            "objects": "always-multiline"
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error"
+        ],
+        "@typescript-eslint/func-call-spacing": [
+          "error"
+        ],
+        "@typescript-eslint/indent": [
+          "error",
+          2
+        ],
+        "@typescript-eslint/keyword-spacing": [
+          "error"
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+          "error",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "multilineDetection": "brackets"
+          }
+        ],
+        "@typescript-eslint/object-curly-spacing": [
+          "error",
+          "always"
+        ],
+        "@typescript-eslint/quotes": [
+          "error",
+          "double"
+        ],
+        "@typescript-eslint/semi": [
+          "error",
+          "always",
+          {
+            "omitLastInOneLineBlock": false
+          }
+        ],
+        "@typescript-eslint/sort-type-union-intersection-members": [
+          "error"
+        ],
+        "@typescript-eslint/space-before-function-paren": [
+          "error",
+          {
+            "anonymous": "always",
+            "asyncArrow": "always",
+            "named": "never"
+          }
+        ],
+        "array-bracket-spacing": [
+          "error"
+        ],
+        "eol-last": [
+          "error",
+          "always"
+        ],
+        "block-spacing": [
+          "error",
+          "always"
+        ],
+        "import/order": [
+          "error",
+          {
+            "alphabetize": {
+              "order": "asc"
+            }
+          }
+        ],
+        "key-spacing": [
+          "error"
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 2,
+            "maxEOF": 0
+          }
+        ],
+        "no-trailing-spaces": "error",
+        "sort-imports": [
+          "error",
+          {
+            "ignoreDeclarationSort": true
+          }
+        ],
+        "sort-keys": [
+          "error",
+          "asc"
+        ],
+        "semi-spacing": [
+          "error"
+        ],
+        "space-in-parens": [
+          "error"
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}

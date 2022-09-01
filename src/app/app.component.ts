@@ -1,15 +1,16 @@
-import { CommonModule } from '@angular/common';
-import { ApplicationModule, Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { SquaresComponent } from './squares/squares.component';
+import { CommonModule } from "@angular/common";
+import {  Component } from "@angular/core";
+import { RestartComponent } from "./restart/restart.component";
+import { SquaresComponent } from "./squares/squares.component";
+import { StepbackComponent } from "./stepback/stepback.component";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  imports: [SquaresComponent, CommonModule, StepbackComponent, RestartComponent],
+  selector: "app-root",
   standalone: true,
-  imports: [SquaresComponent, CommonModule]
+  styleUrls: ["./app.component.scss"],
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
-  title = '10x10';
+  protected title = "10x10";
 }

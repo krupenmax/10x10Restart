@@ -1,24 +1,25 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { GameService } from '../game.service';
-import { square } from '../square';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { GameService } from "../game.service";
+import { square } from "../square";
 
 @Component({
-  selector: 'app-squares',
-  templateUrl: './squares.component.html',
-  styleUrls: ['./squares.component.scss'],
+  imports: [CommonModule],
+  selector: "app-squares",
   standalone: true,
-  imports: [CommonModule]
+  styleUrls: ["./squares.component.scss"],
+  templateUrl: "./squares.component.html",
 })
 export class SquaresComponent implements OnInit {
 
-  constructor(private gameService: GameService) { }
+  public constructor(private gameService: GameService) { }
 
   public getSquares(): square[] {
     return this.gameService.getSquares();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    console.log("");
   }
 
 }
