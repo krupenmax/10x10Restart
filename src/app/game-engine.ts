@@ -25,7 +25,6 @@ export class GameEngine {
         };
         this.squares.push(square);
       }
-    console.log(this.squares);
   }
 
   public getSquares(): square[] {
