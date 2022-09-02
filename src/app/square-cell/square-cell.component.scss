@@ -1,0 +1,69 @@
+.moveto {
+  background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+  bottom: 0%;
+  box-sizing: border-box;
+  clip-path: circle();
+  height: 40%;
+  left: 30%;
+  position: absolute;
+  right: 0%;
+  shape-outside: ellipse();
+  top: 30%;
+  width: 40%;
+}
+
+.knight {
+  background: linear-gradient(180deg, #ffb800 0%, #ff1f00 100%);
+  box-sizing: border-box;
+  clip-path: circle();
+  height: 75%;
+  left: 12.5%;
+  position: absolute;
+  shape-outside: ellipse();
+  top: 12.5%;
+  width: 75%;
+}
+
+.knight-text {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+  line-height: 27px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.enemy-piece {
+  background: linear-gradient(220.53deg, #b2f763 0%, #26ab3f 76.95%);
+  box-shadow: 6px -6px 16px rgb(178 247 99 / 20%);
+  clip-path: circle();
+  height: 70%;
+  left: 15%;
+  position: absolute;
+  shape-outside: ellipse();
+  top: 15%;
+  width: 70%;
+}
+
+.enemy-text {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}

@@ -1,17 +1,17 @@
 import { square } from "./square";
 
-export class gameEngine {
+export class GameEngine {
   public isFirstMove = true;
   public isSecondMove = false;
   public squares: square[];
-  public prevX: number[] = new Array();
-  public prevY: number[] = new Array();
-  public KnightX: number = 0;
-  public KnightY: number = 0;
+  public prevX: number[] = [];
+  public prevY: number[] = [];
+  public knightX: number = 0;
+  public knightY: number = 0;
   public moveCounter: number = 1;
 
   public constructor() {
-    this.squares = new Array();
+    this.squares = [];
     for (let i: number = 0; i < 10; i++)
       for (let j: number = 0; j < 10; j++) {
         let square: square = {
@@ -28,6 +28,10 @@ export class gameEngine {
     console.log(this.squares);
   }
 
+  public getSquares(): square[] {
+    return this.squares;
+  }
+
   public checkForFirstMove(): boolean {
     return this.isFirstMove;
   }
@@ -36,22 +40,22 @@ export class gameEngine {
     return this.isSecondMove;
   }
 
-  public Clicked(i: number): void {
+  public clicked(i: number): void {
     if (this.isFirstMove == true || this.squares[i].isToMove == true && this.squares[i].isEnemy == false) {
       if (this.isSecondMove == true && this.squares[i].isToMove == true) {
         this.isSecondMove = false;
       }
       if (this.isToMove(i) == true) {
-        this.prevX.push(this.KnightX);
-        this.prevY.push(this.KnightY);
+        this.prevX.push(this.knightX);
+        this.prevY.push(this.knightY);
       }
       if (this.isToMove(i) == true && this.squares[i].isEnemy == false) {
         for (let i: number = 0; i < 100; i++) {
           this.squares[i].isKnight = false;
         }
         this.squares[i].isKnight = true;
-        this.KnightX = this.squares[i].x;
-        this.KnightY = this.squares[i].y;
+        this.knightX = this.squares[i].x;
+        this.knightY = this.squares[i].y;
         this.squares[i].counter = this.moveCounter;
         this.moveCounter++;
         this.changeToUnMoveTo();
@@ -67,8 +71,8 @@ export class gameEngine {
           }
         }
         this.squares[i].isKnight = true;
-        this.KnightX = this.squares[i].x;
-        this.KnightY = this.squares[i].y;
+        this.knightX = this.squares[i].x;
+        this.knightY = this.squares[i].y;
         this.squares[i].counter = this.moveCounter;
         this.moveCounter++;
         this.isFirstMove = false;
@@ -81,18 +85,18 @@ export class gameEngine {
 
 
   public stepback(): void {
-    if (this.isFirstMove == false && this.isSecondMove == false && this.KnightX != this.prevX[this.prevX.length] && this.KnightY != this.prevY[this.prevY.length]) {
+    if (this.isFirstMove == false && this.isSecondMove == false && this.knightX != this.prevX[this.prevX.length] && this.knightY != this.prevY[this.prevY.length]) {
       if (this.prevX.length >= 1) {
         this.changeToUnMoveTo();
-        this.findByCoordinates(this.KnightX, this.KnightY).isKnight = false;
-        this.findByCoordinates(this.KnightX, this.KnightY).isEnemy = false;
-        this.KnightX = this.prevX[this.prevX.length - 1];
+        this.findByCoordinates(this.knightX, this.knightY).isKnight = false;
+        this.findByCoordinates(this.knightX, this.knightY).isEnemy = false;
+        this.knightX = this.prevX[this.prevX.length - 1];
         this.prevX.splice(this.prevX.length - 1, 1);
-        this.KnightY = this.prevY[this.prevY.length - 1];
+        this.knightY = this.prevY[this.prevY.length - 1];
         this.prevY.splice(this.prevY.length - 1, 1);
         this.changeToPicked(this.prevX[this.prevX.length], this.prevY[this.prevY.length]);
-        this.findByCoordinates(this.KnightX, this.KnightY).isKnight = true;
-        this.changeToPicked(this.KnightX, this.KnightY);
+        this.findByCoordinates(this.knightX, this.knightY).isKnight = true;
+        this.changeToPicked(this.knightX, this.knightY);
         this.moveCounter--;
       }
     }

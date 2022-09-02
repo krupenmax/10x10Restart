@@ -1,0 +1,16 @@
+<div class="upper-bar">
+    <div class="size-div">
+        10x10
+    </div>
+    <div class="buttons-div">
+        <app-stepback></app-stepback>
+        <app-restart></app-restart>
+    </div>
+</div>
+<div class="board"> 
+    <div class="grid-container">
+        <div class="square-field" *ngFor="let square of squares; index as i">
+            <app-square-cell [isEnemy]="getIsEnemy(i)" [isKnight]="getIsKnight(i)" [isMoveTo]="getIsToMove(i)"></app-square-cell>
+        </div>
+    </div>
+</div>

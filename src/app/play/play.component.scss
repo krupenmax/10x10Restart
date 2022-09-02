@@ -1,0 +1,72 @@
+.buttons-div {
+  align-items: center;
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: row;
+  justify-content: left;
+}
+
+:host {
+  backdrop-filter: blur(25px);
+  background: linear-gradient(111.49deg, rgb(255 255 255 / 40%) -8.95%, rgb(255 255 255 / 1%) 114%);
+  border: solid 2px;
+  border-color: #fff;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.board {
+  align-items: center;
+  backdrop-filter: blur(101px);
+  background: linear-gradient(180deg, #aac2ff 0%, #c81bf1 100%);
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.upper-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.size-div {
+  background: linear-gradient(180deg, #296399 54.68%, rgb(255 255 255 / 0%) 187.46%);
+  background-clip: text;
+  flex-basis: 50%;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px;
+  text-align: left;
+  -webkit-text-fill-color: transparent;
+  text-transform: capitalize;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.square-field {
+  align-items: center;
+  background: linear-gradient(180deg, #fff -31.99%, rgb(255 255 255 / 0%) 113.98%);
+  border-style: solid;
+  border-bottom-style: none;
+  border-color: #fff rgb(255 255 255 / 28.1%) rgb(255 255 255 / 37.7%) rgb(255 255 255 / 28.1%);
+  border-radius: 30%;
+  border-width: 2px;
+  display: flex;
+  filter: drop-shadow(-21px 15px 50px rgb(29 38 70 / 25%));
+  height: 6vmin;
+  justify-content: center;
+  outline: none;
+  width: 6vmin;
+}
