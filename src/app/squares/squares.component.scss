@@ -7,8 +7,11 @@
 .square-field {
   align-items: center;
   background: linear-gradient(180deg, #fff -31.99%, rgb(255 255 255 / 0%) 113.98%);
+  border-style: solid;
+  border-bottom-style: none;
+  border-color: #fff rgb(255 255 255 / 28.1%) rgb(255 255 255 / 37.7%) rgb(255 255 255 / 28.1%);
   border-radius: 30%;
-  border-style: none;
+  border-width: 2px;
   display: flex;
   filter: drop-shadow(-21px 15px 50px rgb(29 38 70 / 25%));
   height: 6vmin;

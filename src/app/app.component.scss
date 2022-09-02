@@ -7,6 +7,28 @@
   overflow: auto;
 }
 
+.blue-ellipse {
+  background: linear-gradient(to top, #fc00ff 0%, #00dbde 100%);
+  border-radius: 50%;
+  height: 35vh;
+  margin-bottom: 25%;
+  margin-right: 40%;
+  position: absolute;
+  width: 35vh;
+  z-index: 0;
+}
+
+.yellow-ellipse {
+  background: linear-gradient(90deg, #e65c00 0%, #f9d423 100%);
+  border-radius: 50%;
+  height: 35vh;
+  margin-left: 40%;
+  margin-top: 40%;
+  position: absolute;
+  width: 35vh;
+  z-index: 0;
+}
+
 .buttons-div {
   align-items: center;
   display: flex;
@@ -16,7 +38,7 @@
 }
 
 .play-container {
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(25px);
   background: linear-gradient(111.49deg, rgb(255 255 255 / 40%) -8.95%, rgb(255 255 255 / 1%) 114%);
   border: solid 2px;
   border-color: #fff;
