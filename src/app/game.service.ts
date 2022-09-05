@@ -12,6 +12,7 @@ export class GameService {
       for (let j: number = 0; j < 10; j++) {
         let square: ISquare = {
           counter: 0,
+          currentCondition: "",
           isEnemy: false,
           isKnight: false,
           isSelected: false,

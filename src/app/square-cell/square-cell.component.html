@@ -1,9 +1,7 @@
-<div class="isToMove" *ngIf="showAsMoveTo()"></div>
+<div class="moveto" *ngIf="showAsMoveTo()"></div>
 <div class="enemy-piece" *ngIf="showAsEnemy()">
-    <div class="enemy-text"></div>                  
+    <div class="enemy-text">{{counter}}</div>                  
 </div>
-<div>
-    <div class="knight" *ngIf="showAsKnight()">
-        <div class="knight-text"></div>
-    </div>
+<div class="knight" *ngIf="showAsKnight()">
+        <div class="knight-text">{{counter}}</div>
 </div>

@@ -12,9 +12,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 })
 export class SquareCellComponent {
   @Input() public isEnemy = false;
-  @Input() public isMoveTo = false;
+  @Input() public isToMove = false;
   @Input() public isKnight = false;
   @Input() public currentCondition = "";
+  @Input() public counter = 0;
   public constructor(private cdr$: ChangeDetectorRef) { }
 
   public showAsEnemy(): boolean {
@@ -26,7 +27,7 @@ export class SquareCellComponent {
   }
 
   public showAsMoveTo(): boolean {
-    return this.isMoveTo;
+    return this.isToMove;
   }
 
   public getCurrentCondition(): string {

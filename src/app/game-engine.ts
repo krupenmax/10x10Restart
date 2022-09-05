@@ -59,6 +59,7 @@ export class GameEngine {
         this.squares[i].counter = this.moveCounter;
         this.moveCounter++;
         this.changeToUnMoveTo();
+        this.changeToPicked(this.squares[i].x, this.squares[i].y);
       }
       if (this.squares[i].isEnemy == false && this.squares[i].isKnight == true) {
         this.isKnight(i);
@@ -266,18 +267,7 @@ export class GameEngine {
   }
 
   public isKnight(i: number): boolean {
-    if (this.squares[i].isKnight == true) {
-      if (this.squares[i].isSelected == false) {
-        this.changeToPicked(this.squares[i].x, this.squares[i].y);
-      }
-      else {
-        this.changeToUnMoveTo();
-      }
-      return true;
-    }
-    else {
-      return false;
-    }
+    return this.squares[i].isKnight;
   }
 
   public isToMove(i: number): boolean {

@@ -35,8 +35,18 @@ export class GameComponent {
     return this.gameEngine.isToMove(i);
   }
 
-  public trackByFn(index: number, item: ISquare): number {
+  protected trackByFn(index: number, item: ISquare): number {
     return index;
+  }
+
+  public getCounter(i: number): number {
+    return this.squares[i].counter;
+  }
+
+  public clicked(index: number): void {
+    this.gameEngine.clicked(index);
+    console.log(this.squares);
+    this.cdr$.detectChanges();
   }
 
 }
