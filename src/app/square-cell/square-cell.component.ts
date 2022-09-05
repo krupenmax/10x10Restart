@@ -27,7 +27,7 @@ export class SquareCellComponent {
   }
 
   public showAsKnight(): boolean {
-    if (this.status === Status.Knight) {
+    if (this.status === Status.knight) {
       return true;
     }
     else {

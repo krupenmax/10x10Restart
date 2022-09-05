@@ -1,5 +1,5 @@
 export enum Status {
-  Knight,
+  knight,
   enemy,
   toMove,
   current,

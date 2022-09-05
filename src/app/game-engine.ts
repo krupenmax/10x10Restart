@@ -47,7 +47,7 @@ export class GameEngine {
         this.prevY.push(this.knightY);
       }
       if (this.isToMove(i) == true) {
-        this.squares[i].status = Status.Knight;
+        this.squares[i].status = Status.knight;
         this.findByCoordinates(this.knightX, this.knightY).status = Status.enemy;
         this.knightX = this.squares[i].x;
         this.knightY = this.squares[i].y;
@@ -62,7 +62,7 @@ export class GameEngine {
             this.squares[i].status = Status.none;
           }
         }
-        this.squares[i].status = Status.Knight;
+        this.squares[i].status = Status.knight;
         this.knightX = this.squares[i].x;
         this.knightY = this.squares[i].y;
         this.squares[i].counter = this.moveCounter;
@@ -85,7 +85,7 @@ export class GameEngine {
         this.knightY = this.prevY[this.prevY.length - 1];
         this.prevY.splice(this.prevY.length - 1, 1);
         this.changeToPicked(this.prevX[this.prevX.length], this.prevY[this.prevY.length]);
-        this.findByCoordinates(this.knightX, this.knightY).status = Status.Knight;
+        this.findByCoordinates(this.knightX, this.knightY).status = Status.knight;
         this.changeToPicked(this.knightX, this.knightY);
         this.moveCounter--;
       }
@@ -126,13 +126,13 @@ export class GameEngine {
     let x: number = 0;
     let y: number = 0;
     for (let i: number = 0; i < 100; i++) {
-      if (this.squares[i].status == Status.Knight) {
+      if (this.squares[i].status == Status.knight) {
         x = this.squares[i].x;
         y = this.squares[i].y;
       }
     }
     if (this.checkForWin() == false) {
-      if (this.findByCoordinates(x, y).status == Status.Knight) {
+      if (this.findByCoordinates(x, y).status == Status.knight) {
         let isLost: Boolean = true;
         if (x - 2 >= 0 && y + 1 <= 9) {
           if (this.findByCoordinates(x - 2, y + 1).status != Status.enemy) {
@@ -230,7 +230,7 @@ export class GameEngine {
   }
 
   public isStartPosition(i: number) : boolean {
-    if (this.squares[i].status == Status.Knight) {
+    if (this.squares[i].status == Status.knight) {
       return true;
     }
     else {
@@ -257,7 +257,7 @@ export class GameEngine {
   }
 
   public isKnight(i: number): boolean {
-    if (this.squares[i].status == Status.Knight) {
+    if (this.squares[i].status == Status.knight) {
       return true;
     }
     else {
