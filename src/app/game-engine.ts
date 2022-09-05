@@ -17,7 +17,7 @@ export class GameEngine {
       for (let j: number = 0; j < 10; j++) {
         let square: ISquare = {
           counter: 0,
-          status: Status.currentStatus,
+          status: Status.current,
           x: i,
           y: j,
         };
@@ -38,8 +38,8 @@ export class GameEngine {
   }
 
   public clicked(i: number): void {
-    if (this.isFirstMove == true || this.squares[i].status == Status.statusToMove) {
-      if (this.isSecondMove == true && this.squares[i].status == Status.statusToMove) {
+    if (this.isFirstMove == true || this.squares[i].status == Status.toMove) {
+      if (this.isSecondMove == true && this.squares[i].status == Status.toMove) {
         this.isSecondMove = false;
       }
       if (this.isToMove(i) == true) {
@@ -47,8 +47,8 @@ export class GameEngine {
         this.prevY.push(this.knightY);
       }
       if (this.isToMove(i) == true) {
-        this.squares[i].status = Status.statusKnight;
-        this.findByCoordinates(this.knightX, this.knightY).status = Status.statusEnemy;
+        this.squares[i].status = Status.Knight;
+        this.findByCoordinates(this.knightX, this.knightY).status = Status.enemy;
         this.knightX = this.squares[i].x;
         this.knightY = this.squares[i].y;
         this.squares[i].counter = this.moveCounter;
@@ -59,10 +59,10 @@ export class GameEngine {
       else {
         if (this.isFirstMove) {
           for (let i: number = 0; i < 100; i++) {
-            this.squares[i].status = Status.zeroStatus;
+            this.squares[i].status = Status.none;
           }
         }
-        this.squares[i].status = Status.statusKnight;
+        this.squares[i].status = Status.Knight;
         this.knightX = this.squares[i].x;
         this.knightY = this.squares[i].y;
         this.squares[i].counter = this.moveCounter;
@@ -79,13 +79,13 @@ export class GameEngine {
     if (this.isFirstMove == false && this.isSecondMove == false && this.knightX != this.prevX[this.prevX.length] && this.knightY != this.prevY[this.prevY.length]) {
       if (this.prevX.length >= 1) {
         this.changeToUnMoveTo();
-        this.findByCoordinates(this.knightX, this.knightY).status = Status.zeroStatus;
+        this.findByCoordinates(this.knightX, this.knightY).status = Status.none;
         this.knightX = this.prevX[this.prevX.length - 1];
         this.prevX.splice(this.prevX.length - 1, 1);
         this.knightY = this.prevY[this.prevY.length - 1];
         this.prevY.splice(this.prevY.length - 1, 1);
         this.changeToPicked(this.prevX[this.prevX.length], this.prevY[this.prevY.length]);
-        this.findByCoordinates(this.knightX, this.knightY).status = Status.statusKnight;
+        this.findByCoordinates(this.knightX, this.knightY).status = Status.Knight;
         this.changeToPicked(this.knightX, this.knightY);
         this.moveCounter--;
       }
@@ -94,7 +94,7 @@ export class GameEngine {
 
   public restart(): void {
     for (let i: number = 0; i < 100; i++) {
-      this.squares[i].status = Status.zeroStatus;
+      this.squares[i].status = Status.none;
     }
     this.prevX.splice(0, this.prevX.length);
     this.prevY.splice(0, this.prevX.length);
@@ -105,7 +105,7 @@ export class GameEngine {
   public checkForWin(): boolean {
     let isWin: boolean = true;
     for (let i: number = 0; i < 100; i++) {
-      if (this.squares[i].status != Status.statusEnemy) {
+      if (this.squares[i].status != Status.enemy) {
         isWin = false;
       }
     }
@@ -126,51 +126,51 @@ export class GameEngine {
     let x: number = 0;
     let y: number = 0;
     for (let i: number = 0; i < 100; i++) {
-      if (this.squares[i].status == Status.statusKnight) {
+      if (this.squares[i].status == Status.Knight) {
         x = this.squares[i].x;
         y = this.squares[i].y;
       }
     }
     if (this.checkForWin() == false) {
-      if (this.findByCoordinates(x, y).status == Status.statusKnight) {
+      if (this.findByCoordinates(x, y).status == Status.Knight) {
         let isLost: Boolean = true;
         if (x - 2 >= 0 && y + 1 <= 9) {
-          if (this.findByCoordinates(x - 2, y + 1).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x - 2, y + 1).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x - 1 >= 0 && y + 2 <= 9) {
-          if (this.findByCoordinates(x - 1, y + 2).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x - 1, y + 2).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x - 2 >= 0 && y - 1 >= 0) {
-          if (this.findByCoordinates(x - 2, y - 1).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x - 2, y - 1).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x - 1 >= 0 && y - 2 >= 0) {
-          if (this.findByCoordinates(x - 1, y - 2).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x - 1, y - 2).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x + 2 <= 9 && y + 1 <= 9) {
-          if (this.findByCoordinates(x + 2, y + 1).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x + 2, y + 1).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x + 1 <= 9 && y + 2 <= 9) {
-          if (this.findByCoordinates(x + 1, y + 2).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x + 1, y + 2).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x + 2 <= 9 && y - 1 >= 0) {
-          if (this.findByCoordinates(x + 2, y - 1).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x + 2, y - 1).status != Status.enemy) {
             isLost = false;
           }
         }
         if (x + 1 <= 9 && y - 2 >= 0) {
-          if (this.findByCoordinates(x + 1, y - 2).status != Status.statusEnemy) {
+          if (this.findByCoordinates(x + 1, y - 2).status != Status.enemy) {
             isLost = false;
           }
         }
@@ -195,42 +195,42 @@ export class GameEngine {
   }
 
   public changeToPicked(x: number, y: number): void {
-    if (y + 1 <= 9 && x - 2 >= 0 &&  this.findByCoordinates(x - 2, y + 1).status != Status.statusEnemy)
-      this.findByCoordinates(x - 2, y + 1).status = Status.statusToMove;
+    if (y + 1 <= 9 && x - 2 >= 0 &&  this.findByCoordinates(x - 2, y + 1).status != Status.enemy)
+      this.findByCoordinates(x - 2, y + 1).status = Status.toMove;
 
-    if (y + 2 <= 9 && x - 1 >= 0 && this.findByCoordinates(x - 1, y + 2).status != Status.statusEnemy)
-      this.findByCoordinates(x - 1, y + 2).status = Status.statusToMove;
+    if (y + 2 <= 9 && x - 1 >= 0 && this.findByCoordinates(x - 1, y + 2).status != Status.enemy)
+      this.findByCoordinates(x - 1, y + 2).status = Status.toMove;
 
-    if (y - 1 >= 0 && x - 2 >= 0 && this.findByCoordinates(x - 2, y - 1).status != Status.statusEnemy)
-      this.findByCoordinates(x - 2, y - 1).status = Status.statusToMove;
+    if (y - 1 >= 0 && x - 2 >= 0 && this.findByCoordinates(x - 2, y - 1).status != Status.enemy)
+      this.findByCoordinates(x - 2, y - 1).status = Status.toMove;
 
-    if (y - 2 >= 0 && x - 1 >= 0 && this.findByCoordinates(x - 1, y - 2).status != Status.statusEnemy)
-      this.findByCoordinates(x - 1, y - 2).status = Status.statusToMove;
+    if (y - 2 >= 0 && x - 1 >= 0 && this.findByCoordinates(x - 1, y - 2).status != Status.enemy)
+      this.findByCoordinates(x - 1, y - 2).status = Status.toMove;
 
-    if (y + 1 <= 9 && x + 2 <= 9 && this.findByCoordinates(x + 2, y + 1).status != Status.statusEnemy)
-      this.findByCoordinates(x + 2, y + 1).status = Status.statusToMove;
+    if (y + 1 <= 9 && x + 2 <= 9 && this.findByCoordinates(x + 2, y + 1).status != Status.enemy)
+      this.findByCoordinates(x + 2, y + 1).status = Status.toMove;
 
-    if (y + 2 <= 9 && x + 1 <= 9 && this.findByCoordinates(x + 1,y + 2).status != Status.statusEnemy)
-      this.findByCoordinates(x + 1,y + 2).status = Status.statusToMove;
+    if (y + 2 <= 9 && x + 1 <= 9 && this.findByCoordinates(x + 1,y + 2).status != Status.enemy)
+      this.findByCoordinates(x + 1,y + 2).status = Status.toMove;
 
-    if (y - 1 >= 0 && x + 2 <= 9 && this.findByCoordinates(x + 2, y - 1).status != Status.statusEnemy)
-      this.findByCoordinates(x + 2, y - 1).status = Status.statusToMove;
+    if (y - 1 >= 0 && x + 2 <= 9 && this.findByCoordinates(x + 2, y - 1).status != Status.enemy)
+      this.findByCoordinates(x + 2, y - 1).status = Status.toMove;
 
-    if (y - 2 >= 0 && x + 1 <= 9 && this.findByCoordinates(x + 1, y - 2).status != Status.statusEnemy)
-      this.findByCoordinates(x + 1, y - 2).status = Status.statusToMove;
+    if (y - 2 >= 0 && x + 1 <= 9 && this.findByCoordinates(x + 1, y - 2).status != Status.enemy)
+      this.findByCoordinates(x + 1, y - 2).status = Status.toMove;
 
   }
 
   public changeToUnMoveTo(): void {
     for (let i: number = 0; i < 100; i++) {
-      if (this.squares[i].status == Status.statusToMove) {
-        this.squares[i].status = Status.zeroStatus;
+      if (this.squares[i].status == Status.toMove) {
+        this.squares[i].status = Status.none;
       }
     }
   }
 
   public isStartPosition(i: number) : boolean {
-    if (this.squares[i].status == Status.statusKnight) {
+    if (this.squares[i].status == Status.Knight) {
       return true;
     }
     else {
@@ -239,7 +239,7 @@ export class GameEngine {
   }
 
   public isEnemy(i: number): boolean {
-    if (this.squares[i].status == Status.statusEnemy) {
+    if (this.squares[i].status == Status.enemy) {
       return true;
     }
     else {
@@ -248,7 +248,7 @@ export class GameEngine {
   }
 
   public isToMove(i: number): boolean {
-    if (this.squares[i].status == Status.statusToMove) {
+    if (this.squares[i].status == Status.toMove) {
       return true;
     }
     else {
@@ -257,7 +257,7 @@ export class GameEngine {
   }
 
   public isKnight(i: number): boolean {
-    if (this.squares[i].status == Status.statusKnight) {
+    if (this.squares[i].status == Status.Knight) {
       return true;
     }
     else {

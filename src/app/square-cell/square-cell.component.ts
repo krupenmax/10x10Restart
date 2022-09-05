@@ -18,7 +18,7 @@ export class SquareCellComponent {
   }
 
   public showAsEnemy(): boolean {
-    if (this.status === Status.statusEnemy) {
+    if (this.status === Status.enemy) {
       return true;
     }
     else {
@@ -27,7 +27,7 @@ export class SquareCellComponent {
   }
 
   public showAsKnight(): boolean {
-    if (this.status === Status.statusKnight) {
+    if (this.status === Status.Knight) {
       return true;
     }
     else {
@@ -36,7 +36,7 @@ export class SquareCellComponent {
   }
 
   public showAsMoveTo(): boolean {
-    if (this.status == Status.statusToMove) {
+    if (this.status == Status.toMove) {
       return true;
     }
     else {
