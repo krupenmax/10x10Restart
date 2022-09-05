@@ -1,7 +1,7 @@
 export enum Status {
-  statusKnight = "isKnight",
-  statusEnemy = "isEnemy",
-  statusToMove = "isToMove",
-  currentStatus = "",
-  zeroStatus = "",
+  statusKnight,
+  statusEnemy,
+  statusToMove,
+  currentStatus,
+  zeroStatus,
 }

@@ -12,13 +12,13 @@ import { Status } from "../status";
   templateUrl: "./square-cell.component.html",
 })
 export class SquareCellComponent {
-  @Input() public status: string = "";
+  @Input() public status?: Status;
   @Input() public counter = 0;
   public constructor(private cdr$: ChangeDetectorRef) {
   }
 
   public showAsEnemy(): boolean {
-    if (this.status === "isEnemy") {
+    if (this.status === Status.statusEnemy) {
       return true;
     }
     else {
@@ -27,7 +27,7 @@ export class SquareCellComponent {
   }
 
   public showAsKnight(): boolean {
-    if (this.status === "isKnight") {
+    if (this.status === Status.statusKnight) {
       return true;
     }
     else {
@@ -36,7 +36,7 @@ export class SquareCellComponent {
   }
 
   public showAsMoveTo(): boolean {
-    if (this.status == "isToMove") {
+    if (this.status == Status.statusToMove) {
       return true;
     }
     else {

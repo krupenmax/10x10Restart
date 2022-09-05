@@ -4,5 +4,5 @@ export interface ISquare {
   x: number;
   y: number;
   counter: number;
-  status: string;
+  status: Status;
 }

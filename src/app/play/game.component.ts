@@ -39,7 +39,7 @@ export class GameComponent {
     return this.squares[i].counter;
   }
 
-  public getStatus(i: number): string {
+  public getStatus(i: number) {
     return this.squares[i].status;
   }
 
