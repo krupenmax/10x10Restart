@@ -27,10 +27,6 @@ export class GameComponent {
     return this.gameEngine.isEnemy(i);
   }
 
-  public getIsKnight(i: number): boolean {
-    return this.gameEngine.isKnight(i);
-  }
-
   public getIsToMove(i: number): boolean {
     return this.gameEngine.isToMove(i);
   }
@@ -41,6 +37,10 @@ export class GameComponent {
 
   public getCounter(i: number): number {
     return this.squares[i].counter;
+  }
+
+  public getStatus(i: number): string {
+    return this.squares[i].status;
   }
 
   public clicked(index: number): void {

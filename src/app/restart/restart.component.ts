@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { GameEngine } from "../game-engine";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,7 +11,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 })
 export class RestartComponent  {
 
-  public constructor(private cdr$: ChangeDetectorRef) { }
+  public constructor(private cdr$: ChangeDetectorRef, private gameEngine: GameEngine) { }
+
+  public restart(): void {
+    this.gameEngine.restart();
+  }
 
 
 }

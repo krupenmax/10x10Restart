@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { GameEngine } from "../game-engine";
 
 @Component({
   selector: "app-stepback",
@@ -8,7 +9,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class StepbackComponent {
 
-  public constructor() { }
+  public constructor(private gameEngine: GameEngine) { }
 
+  public stepback(): void {
+    this.gameEngine.stepback();
+  }
 
 }

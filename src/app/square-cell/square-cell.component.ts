@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input  } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { Status } from "../status";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,27 +12,37 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
   templateUrl: "./square-cell.component.html",
 })
 export class SquareCellComponent {
-  @Input() public isEnemy = false;
-  @Input() public isToMove = false;
-  @Input() public isKnight = false;
-  @Input() public currentCondition = "";
+  @Input() public status: string = "";
   @Input() public counter = 0;
-  public constructor(private cdr$: ChangeDetectorRef) { }
+  public constructor(private cdr$: ChangeDetectorRef) {
+  }
 
   public showAsEnemy(): boolean {
-    return this.isEnemy;
+    if (this.status === "isEnemy") {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   public showAsKnight(): boolean {
-    return this.isKnight;
+    if (this.status === "isKnight") {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   public showAsMoveTo(): boolean {
-    return this.isToMove;
+    if (this.status == "isToMove") {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
-  public getCurrentCondition(): string {
-    return this.currentCondition;
-  }
 
 }
