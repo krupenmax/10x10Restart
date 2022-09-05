@@ -9,7 +9,7 @@
 </div>
 <div class="board"> 
     <div class="grid-container">
-        <div class="square-field" *ngFor="let square of squares; index as i">
+        <div class="square-field" *ngFor="let square of squares; index as i; trackBy: trackByFn">
             <app-square-cell [isEnemy]="getIsEnemy(i)" [isKnight]="getIsKnight(i)" [isMoveTo]="getIsToMove(i)"></app-square-cell>
         </div>
     </div>

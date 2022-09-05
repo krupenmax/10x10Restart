@@ -1,9 +1,9 @@
-import { square } from "./square";
+import { ISquare } from "./square";
 
 export class GameEngine {
   public isFirstMove = true;
   public isSecondMove = false;
-  public squares: square[];
+  public squares: ISquare[];
   public prevX: number[] = [];
   public prevY: number[] = [];
   public knightX: number = 0;
@@ -14,8 +14,9 @@ export class GameEngine {
     this.squares = [];
     for (let i: number = 0; i < 10; i++)
       for (let j: number = 0; j < 10; j++) {
-        let square: square = {
+        let square: ISquare = {
           counter: 0,
+          currentCondition: "",
           isEnemy: false,
           isKnight: false,
           isSelected: false,
@@ -27,7 +28,7 @@ export class GameEngine {
       }
   }
 
-  public getSquares(): square[] {
+  public getSquares(): ISquare[] {
     return this.squares;
   }
 
@@ -197,7 +198,7 @@ export class GameEngine {
     }
   }
 
-  public findByCoordinates(x: number, y: number): square {
+  public findByCoordinates(x: number, y: number): ISquare {
     for (let i: number = 0; i < 100; i++) {
       if (this.squares[i].x == x && this.squares[i].y == y) {
         return this.squares[i];

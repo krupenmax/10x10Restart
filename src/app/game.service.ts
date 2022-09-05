@@ -1,16 +1,16 @@
 import { Injectable } from "@angular/core";
-import { square } from "./square";
+import { ISquare } from "./square";
 
 @Injectable({
   providedIn: "root",
 })
 export class GameService {
-  public squares: square[];
+  public squares: ISquare[];
   public constructor() {
     this.squares = new Array();
     for (let i: number = 0; i < 10; i++)
       for (let j: number = 0; j < 10; j++) {
-        let square: square = {
+        let square: ISquare = {
           counter: 0,
           isEnemy: false,
           isKnight: false,
@@ -24,7 +24,7 @@ export class GameService {
 
   }
 
-  public getSquares(): square[] {
+  public getSquares(): ISquare[] {
     return this.squares;
   }
 }

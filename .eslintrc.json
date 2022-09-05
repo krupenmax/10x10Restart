@@ -105,6 +105,22 @@
             "named": "never"
           }
         ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": [
+              "PascalCase"
+            ],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ],
+        "camelcase": [
+          2
+        ],
         "array-bracket-spacing": [
           "error"
         ],
