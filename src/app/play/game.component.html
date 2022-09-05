@@ -3,8 +3,12 @@
         10x10
     </div>
     <div class="buttons-div">
-        <app-stepback></app-stepback>
-        <app-restart></app-restart>
+        <button id="stepback-button" (click)="stepback()">
+            STEP BACK
+        </button>
+        <button id="restart-button" (click)="restart()">
+            RESTART
+        </button>
     </div>
 </div>
 <div class="board"> 

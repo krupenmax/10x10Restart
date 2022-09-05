@@ -2,15 +2,13 @@ import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 import { GameEngine } from "../game-engine";
-import { PopupWindowComponent } from "../pop-ip-window/pop-up-window.component";
-import { RestartComponent } from "../restart/restart.component";
+import { PopupWindowComponent } from "../pop-up-window/pop-up-window.component";
 import { ISquare } from "../square";
 import { SquareCellComponent } from "../square-cell/square-cell.component";
-import { StepbackComponent } from "../stepback/stepback.component";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [StepbackComponent, RestartComponent, CommonModule, SquareCellComponent, PopupWindowComponent],
+  imports: [CommonModule, SquareCellComponent, PopupWindowComponent],
   providers: [GameEngine],
   selector: "app-game",
   standalone: true,
@@ -60,6 +58,14 @@ export class GameComponent {
     else {
       return false;
     }
+  }
+
+  public restart(): void {
+    this.gameEngine.restart();
+  }
+
+  public stepback(): void {
+    this.gameEngine.stepback();
   }
 
 }

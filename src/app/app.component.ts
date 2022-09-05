@@ -1,7 +1,7 @@
 import {  Component } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { GameComponent } from "./play/game.component";
-import { PopupWindowComponent } from "./pop-ip-window/pop-up-window.component";
+import { PopupWindowComponent } from "./pop-up-window/pop-up-window.component";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
