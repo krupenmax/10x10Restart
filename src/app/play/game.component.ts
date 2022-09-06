@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 import { GameEngine } from "../game-engine";
 import { PopupWindowComponent } from "../pop-up-window/pop-up-window.component";
-import { ISquare } from "../square";
+import { Square } from "../square";
 import { SquareCellComponent } from "../square-cell/square-cell.component";
 
 @Component({
@@ -16,7 +16,7 @@ import { SquareCellComponent } from "../square-cell/square-cell.component";
   templateUrl: "./game.component.html",
 })
 export class GameComponent {
-  public squares: ISquare[] = [];
+  public squares: Square[] = [];
   public isLose: Boolean = false;
   public isWin: Boolean = false;
 
@@ -32,7 +32,7 @@ export class GameComponent {
     return this.gameEngine.isToMove(i);
   }
 
-  protected trackByFn(index: number, item: ISquare): number {
+  protected trackByFn(index: number, item: Square): number {
     return index;
   }
 
@@ -45,7 +45,7 @@ export class GameComponent {
   }
 
   public clicked(index: number): void {
-    this.gameEngine.clicked(index);
+    this.gameEngine.move(index);
     this.cdr$.detectChanges();
   }
 

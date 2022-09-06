@@ -1,6 +1,6 @@
 import { Status } from "./status";
 
-export interface ISquare {
+export interface Square {
   x: number;
   y: number;
   counter: number;

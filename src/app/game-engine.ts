@@ -1,10 +1,11 @@
-import { ISquare } from "./square";
+import { Observable } from "rxjs";
+import { Square } from "./square";
 import { Status } from "./status";
 
 export class GameEngine {
-  public isFirstMove = true;
-  public isSecondMove = false;
-  public squares: ISquare[];
+  public isFirstMove: boolean = true;
+  public isSecondMove: boolean = false;
+  public squares: Square[];
   public prevX: number[] = [];
   public prevY: number[] = [];
   public knightX: number = 0;
@@ -15,7 +16,7 @@ export class GameEngine {
     this.squares = [];
     for (let i: number = 0; i < 10; i++)
       for (let j: number = 0; j < 10; j++) {
-        let square: ISquare = {
+        let square: Square = {
           counter: 0,
           status: Status.current,
           x: i,
@@ -25,7 +26,7 @@ export class GameEngine {
       }
   }
 
-  public getSquares(): ISquare[] {
+  public getSquares(): Square[] {
     return this.squares;
   }
 
@@ -37,7 +38,7 @@ export class GameEngine {
     return this.isSecondMove;
   }
 
-  public clicked(i: number): void {
+  public move(i: number): void {
     if (this.isFirstMove == true || this.squares[i].status == Status.toMove) {
       if (this.isSecondMove == true && this.squares[i].status == Status.toMove) {
         this.isSecondMove = false;
@@ -185,7 +186,7 @@ export class GameEngine {
     }
   }
 
-  public findByCoordinates(x: number, y: number): ISquare {
+  public findByCoordinates(x: number, y: number): Square {
     for (let i: number = 0; i < 100; i++) {
       if (this.squares[i].x == x && this.squares[i].y == y) {
         return this.squares[i];
