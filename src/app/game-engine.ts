@@ -13,7 +13,7 @@ export class GameEngine implements GameInterface {
   public knightX: number = 0;
   public knightY: number = 0;
   public moveCounter: number = 1;
-  public subject: BehaviorSubject<GameState>;
+  public state: BehaviorSubject<GameState>;
 
   public constructor() {
     this.squares = [];
@@ -28,10 +28,12 @@ export class GameEngine implements GameInterface {
         this.squares.push(square);
       }
     let gameState: GameState = {
+      isLose: false,
+      isWin: false,
       moveCounter: this.moveCounter,
       squares: this.squares,
     };
-    this.subject = new BehaviorSubject(gameState);
+    this.state = new BehaviorSubject(gameState);
 
   }
 
@@ -83,10 +85,12 @@ export class GameEngine implements GameInterface {
       }
     }
     let tempState: GameState = {
+      isLose: this.checkForLose(),
+      isWin: this.checkForWin(),
       moveCounter: this.moveCounter,
       squares: this.squares,
     };
-    this.subject.next(tempState);
+    this.state.next(tempState);
   }
 
 
@@ -137,7 +141,7 @@ export class GameEngine implements GameInterface {
     return numberBack;
   }
 
-  public checkForLose(): Boolean {
+  public checkForLose(): boolean {
     let x: number = 0;
     let y: number = 0;
     for (let i: number = 0; i < 100; i++) {
@@ -148,7 +152,7 @@ export class GameEngine implements GameInterface {
     }
     if (this.checkForWin() == false) {
       if (this.findByCoordinates(x, y).status == Status.knight) {
-        let isLost: Boolean = true;
+        let isLost: boolean = true;
         if (x - 2 >= 0 && y + 1 <= 9) {
           if (this.findByCoordinates(x - 2, y + 1).status != Status.enemy) {
             isLost = false;
@@ -278,9 +282,5 @@ export class GameEngine implements GameInterface {
     else {
       return false;
     }
-  }
-
-  public getState(): Observable<GameState> {
-    return this.subject;
   }
 }

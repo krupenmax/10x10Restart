@@ -20,7 +20,7 @@ import { SquareCellComponent } from "../square-cell/square-cell.component";
 export class GameComponent {
   public isLose: Boolean = false;
   public isWin: Boolean = false;
-  public subject: BehaviorSubject<GameState> = this.gameEngine.subject;
+  public state: BehaviorSubject<GameState> = this.gameEngine.state;
 
   public constructor(private gameEngine: GameEngine, private cdr: ChangeDetectorRef) {
 
