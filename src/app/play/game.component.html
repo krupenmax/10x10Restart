@@ -14,8 +14,8 @@
 <div class="board"> 
     <app-pop-up-window [isLose]="isLose" [isWin]="isWin" *ngIf="checkGameOver()"></app-pop-up-window>
     <div class="grid-container">
-        <div class="square-field" *ngFor="let square of squares; index as i; trackBy: trackByFn" (click)="move(i)">
-            <app-square-cell [status]="getStatus(i)" [counter]="getCounter(i)"></app-square-cell>
+        <div class="square-field" *ngFor="let square of (subject | async)?.squares; index as i; trackBy: trackByFn" (click)="move(i)">
+            <app-square-cell [status]="square.status" [counter]="square.counter"></app-square-cell>
         </div>
     </div>
 </div>

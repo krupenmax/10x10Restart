@@ -1,4 +1,4 @@
-import { Observable, Subject, of } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { GameInterface } from "./game-interface";
 import { GameState } from "./game-state";
 import { Square } from "./square";
@@ -13,7 +13,7 @@ export class GameEngine implements GameInterface {
   public knightX: number = 0;
   public knightY: number = 0;
   public moveCounter: number = 1;
-  public subject = new Subject<GameState>;
+  public subject: BehaviorSubject<GameState>;
 
   public constructor() {
     this.squares = [];
@@ -31,7 +31,7 @@ export class GameEngine implements GameInterface {
       moveCounter: this.moveCounter,
       squares: this.squares,
     };
-    this.subject.next(gameState);
+    this.subject = new BehaviorSubject(gameState);
 
   }
 

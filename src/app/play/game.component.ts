@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
-import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from "@angular/core";
 import { Component } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { GameEngine } from "../game-engine";
 import { GameState } from "../game-state";
 import { PopupWindowComponent } from "../pop-up-window/pop-up-window.component";
@@ -17,38 +18,21 @@ import { SquareCellComponent } from "../square-cell/square-cell.component";
   templateUrl: "./game.component.html",
 })
 export class GameComponent {
-  public squares: Square[] = [];
   public isLose: Boolean = false;
   public isWin: Boolean = false;
-  public gameState: GameState = {
-    moveCounter: 0,
-    squares: this.squares,
-  };
+  public subject: BehaviorSubject<GameState> = this.gameEngine.subject;
 
-  public constructor(private gameEngine: GameEngine, private cdr$: ChangeDetectorRef) {
-    this.squares = this.gameEngine.getSquares();
-    this.subscribeState();
+  public constructor(private gameEngine: GameEngine, private cdr: ChangeDetectorRef) {
+
   }
 
   protected trackByFn(index: number, item: Square): number {
     return index;
   }
 
-  public getCounter(i: number): number {
-    return this.gameState.squares[i].counter;
-  }
-
-  public subscribeState(): void {
-    this.gameEngine.getState()?.subscribe(gameState => this.gameState = gameState);
-  }
-
-  public getStatus(i: number) {
-    return this.gameState.squares[i].status;
-  }
-
   public move(index: number): void {
     this.gameEngine.move(index);
-    this.cdr$.detectChanges();
+    this.cdr.detectChanges();
   }
 
   public checkGameOver(): boolean {
@@ -69,5 +53,4 @@ export class GameComponent {
   public stepback(): void {
     this.gameEngine.stepback();
   }
-
 }

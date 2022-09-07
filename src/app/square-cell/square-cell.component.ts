@@ -13,7 +13,7 @@ import { Status } from "../status";
 })
 export class SquareCellComponent {
   @Input() public status?: Status;
-  @Input() public counter = 0;
+  @Input() public counter? = 0;
 
   public constructor(private cdr$: ChangeDetectorRef) {
 
