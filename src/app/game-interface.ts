@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observer } from "rxjs";
 import { GameState } from "./game-state";
 import { Square } from "./square";
 
@@ -18,6 +18,6 @@ export interface GameInterface {
   isStartPosition(i: number) : boolean;
   isEnemy(i: number): boolean;
   isToMove(i: number): boolean;
-  isToknight(i: number): boolean;
-  state: Observable<GameState>;
+  isKnight(i: number): boolean;
+  state?: Observer<GameState>;
 }

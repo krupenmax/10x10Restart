@@ -1,6 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input  } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { Observable } from "rxjs";
+import { Observer } from "rxjs";
+import { GameState, GameState as number } from "../game-state";
 import { Status } from "../status";
 
 @Component({
@@ -14,7 +17,9 @@ import { Status } from "../status";
 export class SquareCellComponent {
   @Input() public status?: Status;
   @Input() public counter = 0;
+
   public constructor(private cdr$: ChangeDetectorRef) {
+
   }
 
   public showAsEnemy(): boolean {

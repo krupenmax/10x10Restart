@@ -1,8 +1,10 @@
-import { Observable } from "rxjs";
+import { Observable, Observer, of } from "rxjs";
+import { GameInterface } from "./game-interface";
+import { GameState } from "./game-state";
 import { Square } from "./square";
 import { Status } from "./status";
 
-export class GameEngine {
+export class GameEngine implements GameInterface {
   public isFirstMove: boolean = true;
   public isSecondMove: boolean = false;
   public squares: Square[];
@@ -264,5 +266,13 @@ export class GameEngine {
     else {
       return false;
     }
+  }
+
+  public getState(): Observable<GameState> | undefined {
+    let tempState: GameState = {
+      moveCounter: this.moveCounter,
+      squares: this.squares,
+    };
+    return of(tempState);
   }
 }

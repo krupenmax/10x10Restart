@@ -1,7 +1,10 @@
+import { state } from "@angular/animations";
 import { CommonModule } from "@angular/common";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
 import { GameEngine } from "../game-engine";
+import { GameState } from "../game-state";
 import { PopupWindowComponent } from "../pop-up-window/pop-up-window.component";
 import { Square } from "../square";
 import { SquareCellComponent } from "../square-cell/square-cell.component";
@@ -19,9 +22,14 @@ export class GameComponent {
   public squares: Square[] = [];
   public isLose: Boolean = false;
   public isWin: Boolean = false;
+  public gameState: GameState = {
+    moveCounter: 0,
+    squares: this.squares,
+  };
 
   public constructor(private gameEngine: GameEngine, private cdr$: ChangeDetectorRef) {
     this.squares = this.gameEngine.getSquares();
+    this.getState();
   }
 
   public getIsEnemy(i: number): boolean {
@@ -37,11 +45,15 @@ export class GameComponent {
   }
 
   public getCounter(i: number): number {
-    return this.squares[i].counter;
+    return this.gameState?.squares[i].counter;
+  }
+
+  public getState(): void {
+    this.gameEngine.getState()?.subscribe(gameState => this.gameState = gameState);
   }
 
   public getStatus(i: number) {
-    return this.squares[i].status;
+    return this.gameState?.squares[i].status;
   }
 
   public clicked(index: number): void {
