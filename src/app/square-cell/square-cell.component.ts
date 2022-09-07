@@ -1,9 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input  } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
-import { Observable } from "rxjs";
-import { Observer } from "rxjs";
-import { GameState, GameState as number } from "../game-state";
 import { Status } from "../status";
 
 @Component({

@@ -16,8 +16,6 @@ export interface GameInterface {
   changeToPicked(x: number, y: number): void;
   changeToUnMoveTo(): void;
   isStartPosition(i: number) : boolean;
-  isEnemy(i: number): boolean;
   isToMove(i: number): boolean;
-  isKnight(i: number): boolean;
   state?: Observer<GameState>;
 }

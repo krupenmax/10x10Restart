@@ -1,4 +1,4 @@
-import { Observable, Observer, of } from "rxjs";
+import { Observable, of } from "rxjs";
 import { GameInterface } from "./game-interface";
 import { GameState } from "./game-state";
 import { Square } from "./square";
@@ -268,7 +268,7 @@ export class GameEngine implements GameInterface {
     }
   }
 
-  public getState(): Observable<GameState> | undefined {
+  public getState(): Observable<GameState> {
     let tempState: GameState = {
       moveCounter: this.moveCounter,
       squares: this.squares,

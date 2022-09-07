@@ -1,4 +1,4 @@
-import {  Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { GameComponent } from "./play/game.component";
 
