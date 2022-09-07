@@ -1,4 +1,4 @@
-import { Observable, of } from "rxjs";
+import { Observable, Subject, of } from "rxjs";
 import { GameInterface } from "./game-interface";
 import { GameState } from "./game-state";
 import { Square } from "./square";
@@ -13,6 +13,7 @@ export class GameEngine implements GameInterface {
   public knightX: number = 0;
   public knightY: number = 0;
   public moveCounter: number = 1;
+  public subject = new Subject<GameState>;
 
   public constructor() {
     this.squares = [];
@@ -26,6 +27,12 @@ export class GameEngine implements GameInterface {
         };
         this.squares.push(square);
       }
+    let gameState: GameState = {
+      moveCounter: this.moveCounter,
+      squares: this.squares,
+    };
+    this.subject.next(gameState);
+
   }
 
   public getSquares(): Square[] {
@@ -75,6 +82,11 @@ export class GameEngine implements GameInterface {
         this.changeToPicked(this.squares[i].x, this.squares[i].y);
       }
     }
+    let tempState: GameState = {
+      moveCounter: this.moveCounter,
+      squares: this.squares,
+    };
+    this.subject.next(tempState);
   }
 
 
@@ -269,10 +281,6 @@ export class GameEngine implements GameInterface {
   }
 
   public getState(): Observable<GameState> {
-    let tempState: GameState = {
-      moveCounter: this.moveCounter,
-      squares: this.squares,
-    };
-    return of(tempState);
+    return this.subject;
   }
 }
